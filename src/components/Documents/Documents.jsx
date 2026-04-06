@@ -12,7 +12,7 @@ const DOCS = [
     date: '2026-01-13',
     pages: null,
     size: '33 KB',
-    href: '/documentos/solicitud-incorporacion-sindicato-thoughtworks.pdf',
+    href: `${import.meta.env.BASE_URL}documentos/solicitud-incorporacion-sindicato-thoughtworks.pdf`,
     available: true,
     featured: true,
   },
@@ -24,7 +24,7 @@ const DOCS = [
     date: '2023-11-15',
     pages: null,
     size: '252 KB',
-    href: '/documentos/estatutos-sindicato-pi_junio-2020.pdf',
+    href: `${import.meta.env.BASE_URL}documentos/estatutos-sindicato-pi_junio-2020.pdf`,
     available: true,
   },
   {
@@ -35,7 +35,7 @@ const DOCS = [
     date: '2025-11-25',
     pages: null,
     size: '168 KB',
-    href: '/documentos/informativo-1-sindicato.pdf',
+    href: `${import.meta.env.BASE_URL}documentos/informativo-1-sindicato.pdf`,
     available: true,
   },
   {
@@ -46,7 +46,7 @@ const DOCS = [
     date: '2026-01-25',
     pages: null,
     size: '155 KB',
-    href: '/documentos/newsletter-1-enero-2026.pdf',
+    href: `${import.meta.env.BASE_URL}documentos/newsletter-1-enero-2026.pdf`,
     available: true,
   },
   {
@@ -57,7 +57,7 @@ const DOCS = [
     date: '2026-02-25',
     pages: null,
     size: '159 KB',
-    href: '/documentos/newsletter-2-febrero-2026.pdf',
+    href: `${import.meta.env.BASE_URL}documentos/newsletter-2-febrero-2026.pdf`,
     available: true,
   },
   {
@@ -68,7 +68,7 @@ const DOCS = [
     date: '2026-03-25',
     pages: null,
     size: '174 KB',
-    href: '/documentos/newsletter-3-marzo-2026.pdf',
+    href: `${import.meta.env.BASE_URL}documentos/newsletter-3-marzo-2026.pdf`,
     available: true,
   },
 ];

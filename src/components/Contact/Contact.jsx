@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
 import './Contact.css';
 
 const TOPICS = [
@@ -23,6 +23,9 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const isDirty = Object.values(form).some((v) => v.trim() !== '');
 
   function validate() {
     const e = {};
@@ -42,6 +45,8 @@ export default function Contact() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (sending) return;
+
     const errs = validate();
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
@@ -51,12 +56,14 @@ export default function Contact() {
       return;
     }
 
+    setSending(true);
+
     /* Build mailto link — no backend required */
     const subject = encodeURIComponent(`[Sindicato] ${form.topic} — ${form.name}`);
     const body    = encodeURIComponent(
       `Nombre: ${form.name}\nCorreo: ${form.email}\nMotivo: ${form.topic}\n\n${form.message}`,
     );
-    window.location.href = `mailto:contacto@sindicato.org?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:sindicatopitwcl@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   }
 
@@ -116,7 +123,7 @@ export default function Contact() {
                 <p>
                   Se abrió tu cliente de correo con el mensaje. Si no se abrió,
                   escribinos directamente a{' '}
-                  <a href="mailto:contacto@sindicato.org">contacto@sindicato.org</a>.
+                  <a href="mailto:sindicatopitwcl@gmail.com">sindicatopitwcl@gmail.com</a>.
                 </p>
               </div>
             ) : (
@@ -220,8 +227,13 @@ export default function Contact() {
                   <span aria-hidden="true">*</span> Campos obligatorios
                 </p>
 
-                <button type="submit" className="btn btn-primary contact__submit">
-                  Enviar consulta
+                <button
+                  type="submit"
+                  className="btn btn-primary contact__submit"
+                  disabled={!isDirty || sending}
+                  aria-disabled={!isDirty || sending}
+                >
+                  {sending ? 'Enviando…' : 'Enviar consulta'}
                 </button>
               </form>
             )}

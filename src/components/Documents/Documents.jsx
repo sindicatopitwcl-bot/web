@@ -1,9 +1,21 @@
 import { useState } from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
-import DocumentViewer from './DocumentViewer';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
+import DocumentViewer from '../DocumentViewer/DocumentViewer';
 import './Documents.css';
 
 const DOCS = [
+  {
+    id: 0,
+    category: 'Únete',
+    title: 'Solicitud de incorporación al Sindicato',
+    description: '¿Quieres ser parte? Descarga este formulario, complétalo, fírmalo y envíalo a sindicatopitwcl@gmail.com con copia a sindicato-pi-tw@thoughtworks.com.',
+    date: '2026-01-13',
+    pages: null,
+    size: '33 KB',
+    href: '/documentos/solicitud-incorporacion-sindicato-thoughtworks.pdf',
+    available: true,
+    featured: true,
+  },
   {
     id: 1,
     category: 'Estatutos',
@@ -90,19 +102,31 @@ export default function Documents() {
 
         <ul className="documents__list" role="list">
           {DOCS.map((doc) => (
-            <li key={doc.id} className="doc-item fade-in">
+            <li key={doc.id} className={`doc-item fade-in${doc.featured ? ' doc-item--featured' : ''}`}>
               <article>
                 <div className="doc-item__main">
                   <div className="doc-item__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                      <polyline points="14 2 14 8 20 8" />
-                    </svg>
+                    {doc.featured ? (
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                      </svg>
+                    )}
                   </div>
 
                   <div className="doc-item__info">
                     <div className="doc-item__badges">
                       <span className="doc-item__category">{doc.category}</span>
+                      {doc.featured && (
+                        <span className="doc-item__badge-featured">¡Únete ahora!</span>
+                      )}
                       {!doc.available && (
                         <span className="doc-item__badge-soon">Próximamente</span>
                       )}
@@ -144,6 +168,19 @@ export default function Documents() {
                         </svg>
                         Descargar
                       </a>
+                      {doc.featured && (
+                        <a
+                          href="mailto:sindicatopitwcl@gmail.com?cc=sindicato-pi-tw@thoughtworks.com&subject=Solicitud%20de%20incorporaci%C3%B3n%20al%20Sindicato%20Thoughtworks"
+                          className="btn btn-featured doc-item__send"
+                          aria-label="Enviar solicitud firmada por correo"
+                        >
+                          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                            <path d="M22 2L11 13" />
+                            <path d="M22 2L15 22l-4-9-9-4 20-7z" />
+                          </svg>
+                          Enviar firmado
+                        </a>
+                      )}
                     </>
                   ) : (
                     <span className="doc-item__unavailable" aria-label="Documento no disponible aún">

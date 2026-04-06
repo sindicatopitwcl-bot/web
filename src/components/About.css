@@ -1,0 +1,127 @@
+.about {
+  background-color: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.about__pi {
+  font-size: 40rem;
+  top: -8rem;
+  right: -8rem;
+  opacity: 1; /* inherits the .pi-deco opacity */
+}
+
+.about__header {
+  margin-bottom: var(--space-12);
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+}
+
+/* ── Mission / Vision blocks ── */
+.about__block {
+  background: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10);
+  position: relative;
+  overflow: hidden;
+}
+
+.about__block--alt {
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-logo-dark));
+  border-color: var(--color-border-strong);
+}
+
+.about__block-marker {
+  font-family: var(--font-heading);
+  font-size: var(--text-6xl);
+  font-weight: 900;
+  color: rgba(58, 170, 110, 0.1);
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-6);
+  line-height: 1;
+  user-select: none;
+}
+
+.about__block-title {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-4);
+  color: var(--color-accent-green);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+}
+
+.about__block-text {
+  color: rgba(232, 224, 200, 0.85);
+  line-height: var(--leading-normal);
+  font-size: var(--text-base);
+}
+
+/* ── Pillars ── */
+.about__pillars {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.about__pillar {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  background: var(--color-primary-dark);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  transition: border-color var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out);
+}
+
+.about__pillar:hover {
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.about__pillar-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.about__pillar-title {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: var(--space-2);
+}
+
+.about__pillar-text {
+  font-size: var(--text-sm);
+  color: rgba(232, 224, 200, 0.7);
+  line-height: var(--leading-normal);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about__pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .about__block { padding: var(--space-6); }
+}

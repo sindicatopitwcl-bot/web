@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Content Security Policy -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src  'self';
+        style-src   'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src    'self' https://fonts.gstatic.com;
+        img-src     'self' data:;
+        connect-src 'self';
+        frame-src   'self';
+        object-src  'none';
+        base-uri    'self';
+        form-action 'self' mailto:;
+      "
+    />
+
+    <!-- Primary meta -->
+    <title>Sindicato — Asamblea Ordinaria 2025</title>
+    <meta name="description" content="Sitio oficial del Sindicato. Avances, desafíos y próximos pasos de la Asamblea Ordinaria 2025." />
+    <meta name="theme-color" content="#1a5f6e" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:locale"      content="es_AR" />
+    <meta property="og:title"       content="Sindicato — Asamblea Ordinaria 2025" />
+    <meta property="og:description" content="Avances, desafíos y próximos pasos. Representación colectiva con transparencia." />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

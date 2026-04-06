@@ -218,7 +218,14 @@
   }
 
   .doc-item__actions {
-    align-self: flex-start;
+    align-self: stretch;
+    flex-wrap: wrap;
+  }
+
+  .doc-item__actions .btn,
+  .doc-item__actions .btn-featured {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 
   .doc-item__title {
